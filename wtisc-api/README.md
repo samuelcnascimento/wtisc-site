@@ -102,7 +102,7 @@ Nos minicursos, são apresentados aos alunos/participantes várias técnicas e f
 
 Clone o repositório:
 ```bash
-git clone https://github.com/GustavoErick/wtisc-project.git
+git clone https://github.com/samuelnasc-dev/wtisc-site.git
 ```
 Entre no diretório do projeto:
 ```bash
