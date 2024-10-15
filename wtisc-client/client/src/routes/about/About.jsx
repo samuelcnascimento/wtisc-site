@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AboutStyle.scss';
 
 const About = () => {
+
+  // Estado para controlar qual resposta está aberta
+  const [openQuestionIndex, setOpenQuestionIndex] = useState(null);
+
+  const toggleAnswer = (index) => {
+    setOpenQuestionIndex(openQuestionIndex === index ? null : index);
+  };
+
   return (
     <section className="sobre-wtisc">
       <div className="container">
@@ -28,14 +36,38 @@ const About = () => {
 
         <div className="faq">
           <h2>Perguntas Frequentes</h2>
-          <div className="faq-item">
-            <button className="faq-question">Como eu faço pra dançar no meio da ufc?</button>
+
+          <div
+            className={`faq-item ${openQuestionIndex === 0 ? 'active' : ''}`}
+          >
+            <button
+              className="faq-question"
+              onClick={() => toggleAnswer(0)}
+            >
+              Como eu faço pra dançar no meio da UFC?
+            </button>
             <p className="faq-answer">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
               industry's standard dummy text ever since the 1500s.
             </p>
           </div>
-          {/* Adicionar mais itens FAQ */}
+
+          <div
+            className={`faq-item ${openQuestionIndex === 1 ? 'active' : ''}`}
+          >
+            <button
+              className="faq-question"
+              onClick={() => toggleAnswer(1)}
+            >
+              Como eu faço pra me inscrever no evento?
+            </button>
+            <p className="faq-answer">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.
+            </p>
+          </div>
+
+          {/* Adicionar mais perguntas conforme necessário */}
         </div>
       </div>
     </section>

@@ -1,6 +1,8 @@
+import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
+import mongoose from 'mongoose';
 
 import authRoute from './routes/auth.route.js';
 import certificateRoute from './routes/certificate.route.js';
@@ -31,6 +33,15 @@ app.use(cors({
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
+
+// Conexão com o MongoDB usando a variável do .env
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+  .then(() => console.log('Conectado ao MongoDB'))
+  .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
+
 
 // ROTAS
 app.use('/users', userRoute);
